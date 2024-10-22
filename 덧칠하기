@@ -16,6 +16,6 @@ function solution(n, m, section) {
       i += m - 1;
     }
   }
-
+  //
   return answer;
 }
