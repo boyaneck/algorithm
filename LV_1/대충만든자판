@@ -1,0 +1,20 @@
+function solution(keymap, targets) {
+  const memo = {};
+
+  keymap.forEach((key) =>
+    key.split("").forEach((alphabet, i) => {
+      console.log("꿀꿀", memo[alphabet]);
+      memo[alphabet] =
+        (memo[alphabet] || Infinity) < i + 1 ? memo[alphabet] : i + 1;
+    })
+  );
+
+  return targets.map((target) => {
+    console.log(
+      "target",
+      target.split("").reduce((a, t) => (a += memo[t]), 0)
+    );
+    const sum = target.split("").reduce((a, t) => (a += memo[t]), 0);
+    return sum && sum < Infinity ? sum : -1;
+  });
+}
