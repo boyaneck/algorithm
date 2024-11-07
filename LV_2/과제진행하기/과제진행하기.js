@@ -1,31 +1,26 @@
-unction solution(plans) {
-    // 시간 문자열을 분으로 변환하는 함수
-    const timeToMinutes = (time) => {
-      const [hours, minutes] = time.split(":").map(Number);
-      return hours * 60 + minutes;
-    };
-  
-    // plans를 시작 시간 순으로 정렬
-    plans.sort((a, b) => timeToMinutes(a[1]) - timeToMinutes(b[1]));
-  
-    const result = [];            // 완료된 과제 순서 저장
-    const pausedTasks = [];       // 멈춘 과제 스택
-    let currentTime = 0;          // 현재 시간
-  
-    for (let i = 0; i < plans.length; i++) {
-      const [name, start, playtime] = plans[i];
-      const startTime = timeToMinutes(start);
-      const duration = parseInt(playtime, 10);
-  
-      // 이전 과제를 완료할 수 있는지 체크
-      while (pausedTasks.length > 0 && currentTime <= startTime) {
-        const [pausedName, pausedTime] = pausedTasks.pop();
-        if (currentTime + pausedTime <= startTime) {
-          currentTime += pausedTime;
-          result.push(pausedName);
-        } else {
-          pausedTasks.push([pausedName, pausedTime - (startTime - currentTime)]);
-          currentTime = startTime;
-          break;
-        }
-      }
+//새로운 과제를 시작할 시각에는, 새로운 과제를 우선
+//진행중 과제가 끝이났을때 , 1.멈춘 과제가 있으면 이어서 진행, 2.만약 멈춘시간에 새로시작해야할 과제가 있다면
+//새로시작할 과제 우선
+//멈춰둔 과제가 여러개면 "가장 최근에 멈춘 과제 우선"
+
+function solution(plans) {
+  //먼저 2차원 배열의 시간을 확인
+  const arr = plans
+    .map((plan) => {
+      const [subject, starting_time, during] = plan;
+      const [hour, minute] = starting_time.split(":");
+      const reverse_time = Number(hour) * 60 + Number(minute);
+
+      return [subject, reverse_time, Number(during)];
+    })
+    .sort((a, b) => a[1] - b[1]);
+
+  const result = [];
+  const first = object_arr.shift();
+  let current = first[1];
+
+  const stack = [first];
+  var answer = [];
+  console.log(plans);
+  return answer;
+}
