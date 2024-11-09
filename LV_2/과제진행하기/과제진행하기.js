@@ -4,23 +4,32 @@
 //멈춰둔 과제가 여러개면 "가장 최근에 멈춘 과제 우선"
 
 function solution(plans) {
-  //먼저 2차원 배열의 시간을 확인
+  //먼저 2차원 배열의 string_time을 비교하기 쉽게 분단위로 바꾸어 오름차순으로 정렬(일찍 시작하는 과목순)
   const arr = plans
     .map((plan) => {
-      const [subject, starting_time, during] = plan;
+      const [subject, starting_time, run_time] = plan;
       const [hour, minute] = starting_time.split(":");
       const reverse_time = Number(hour) * 60 + Number(minute);
 
-      return [subject, reverse_time, Number(during)];
+      return [subject, reverse_time, Number(run_time)];
     })
     .sort((a, b) => a[1] - b[1]);
 
+  //
   const result = [];
-  const first = object_arr.shift();
-  let current = first[1];
+  const stopped_subject = [];
 
-  const stack = [first];
-  var answer = [];
-  console.log(plans);
+  //첫번째 과제의 시작 시간으로 초기화
+  let current = arr[0][1];
+
+  for (let i = 0; i < arr.length; i++) {
+    const [subject, starting_time, run_time] = arr[i];
+    const total_time = starting_time + run_time;
+
+    if (arr[i][1] + arr[i][2] < arr[i + 1][1] + arr[i + 1][2]) {
+      result.push(arr[i]);
+    }
+  }
+
   return answer;
 }
