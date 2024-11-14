@@ -31,5 +31,7 @@ function solution(plans) {
     }
   }
 
+  //흠좀 더 좋은 방법이 있을 것 같은데...
+
   return answer;
 }
