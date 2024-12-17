@@ -1,0 +1,17 @@
+function solution(weights) {
+    let answer = 0;
+    let map = new Map();
+    let mate_map = new Map();
+    
+    weights.forEach((w, i)=>{ // 사람 수 만큼 돌면서 확인
+        let check = [map.get(w*2), map.get(w*3), map.get(w*4)]; //값 경우의 수를 전부 확인!
+        check.forEach((data, j)=>{
+            if (data === undefined) //이전에 없던 값인 경우 추가
+                map.set(w * (j + 2) , [i]);
+            else
+       
+        });
+    });
+
+    return answer;
+}
