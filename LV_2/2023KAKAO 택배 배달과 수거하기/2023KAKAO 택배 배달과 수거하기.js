@@ -42,5 +42,25 @@ function solution(cap, n, deliveries, pickups) {
       if (delivery <= deliverCap) {
         deliverCap -= delivery;
       } else {
-  
+        deliverStack.push(delivery - deliverCap);
+        deliverCap = 0;
+      }
+    }
+
+    // 수거 처리
+    let pickupCap = cap;
+    while (pickupStack.length > 0 && pickupCap > 0) {
+      const pickup = pickupStack.pop();
+      if (pickup <= pickupCap) {
+        pickupCap -= pickup;
+      } else {
+        pickupStack.push(pickup - pickupCap);
+        pickupCap = 0;
+      }
+    }
+  }
+
+  return answer;
 }
+
+//과제진행하기 택배배달 오답풀이
