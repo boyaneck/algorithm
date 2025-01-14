@@ -49,4 +49,4 @@ function solution(board) {
       if (board[0][2] === mark && board[1][1] === mark && board[2][0] === mark) return true;
       return false;
   };
-  //틱택토 및 풀었던 것들 패턴 복습공부
+  //틱택토 및 풀었던 것들 패턴 복습공부2
