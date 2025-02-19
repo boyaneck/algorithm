@@ -1,30 +1,35 @@
+//1.5개씩 짤라 구간으로 나누기
+//2.각 5개의 구간의 피로도 계산을 위해 diamond로 해당 구간들 피로도 계산하기
+//3.
+
 function solution(picks, minerals) {
-    let diamond = picks[0];
-    let iron = picks[1];
-    let stone = picks[2];
+  const [diamond, iron, stone] = picks;
 
-    const totalPicks = diamond + iron + stone;
-    const sectionCount = Math.ceil(minerals.length / 5);
+  const total_pick = diamond + iron + stone;
+  const mineral_count = Math.ceil(minerals.length / 5);
 
-    if (totalPicks >= sectionCount) {
-        // 모든 구간을 캘 수 있는 경우
-    } else {
-        // 곡괭이가 부족한 경우
-        minerals = minerals.slice(0, totalPicks * 5);
-    }
+  const mineral_section = [];
+  for (let i = 0; i < minerals.length; i += 5) {
+    mineral_section.push(minerals.slice(i, i + 5));
+  }
 
-    const sections = [];
-    for (let i = 0; i < minerals.length; i += 5) {
-        sections.push(minerals.slice(i, i + 5));
-    }
+  //다디아 곡괙이 기준으로 내림차순
+  mineral_section.sort((a, b) => {
+    const point1 = a.reduce(
+      (acc, mineral) =>
+        acc + (mineral === "diamond" ? 1 : mineral === "iron" ? 1 : 1),
+      0
+    );
+    const point2 = b.reduce(
+      (acc, mineral) =>
+        acc + (mineral === "diamond" ? 1 : mineral === "iron" ? 1 : 1),
+      0
+    );
 
-    const sectionCosts = sections.map(section => {
-        let diamondCost = 0;
-        let ironCost = 0;
-        let stoneCost = 0;
+    return point2 - point1;
+  });
 
-        //DP와 Greedy를 이용해야 하는데 ..
+  let exhausted;
 
-
-    }
+  mineral_section.forEach((sec) => {});
 }
