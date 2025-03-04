@@ -31,5 +31,12 @@ function solution(picks, minerals) {
 
   let exhausted;
 
-  mineral_section.forEach((sec) => {});
+  mineral_section.forEach((sec) => {
+    if (picks[0] > 0) {
+      exhausted += mineral_section.length;
+      picks[0]--;
+    } else if (picks[1] > 0) {
+      exhausted += mineral_section.reduce((acc, mineral) => acc + mineral);
+    }
+  });
 }
