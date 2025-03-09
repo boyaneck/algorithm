@@ -65,3 +65,36 @@ function solution(maps) {
   // 총 최소 시간 반환
   return toLeverTime + toExitTime;
 }
+
+
+
+function solution(maps) {
+
+  //시작점 ,출구,레버 찾기 
+  
+  let start,exit,lever
+  
+  for (let i=0; i<maps.length; i++){
+      for(let j=0; j<map[0].length; j++){
+           if(map[i][j]==="S") start=[i][j]
+          else if(map[i][j] ==="E") exit=[i][j]
+          else if(map[i][j] ==="L") lever=[i][j]
+          
+          
+      }
+  }
+  
+  function bfs(start,target){
+  const queue=[[...start,0]]
+  const visited=Array(maps.length).fill("").map(()=>Array(maps[0].length).fill("X"))    
+  visited[start[0]][start[1]]= true
+      
+
+  const direction=[[0,1],[0,-1],[1,0],[-1,0]]
+    while(queue.length >0){
+        
+        
+    }
+  }
+
+  //
