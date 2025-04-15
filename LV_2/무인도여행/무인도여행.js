@@ -33,7 +33,7 @@ function solution(maps) {
 
     return sum;
   };
-
+  //
   // 모든 좌표 탐색
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
